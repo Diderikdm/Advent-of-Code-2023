@@ -11,5 +11,9 @@ with open("day04.txt") as file:
                 cards[c] = cards.get(c, 0) + cards[card]
     print(f"p1: {r1}, p2: {sum(cards.values())}")
 
-# Oneliner
-print((r1,sum(c))if all([not(r1:=0),(c:=[1]*len(data)),(y:=lambda s:{int(x)for x in s.split()if x}),[x for e,x in enumerate(open("day04.txt").read().splitlines())if(o:=y((w:=x.split(":")[1].split("|"))[0])&y(w[1]))and(r1:=r1+(2**(len(o)-1)))and[c.insert(d,c.pop(d)+1*c[e])for d in range(e+1,e+len(o)+1)]]])else 0)
+# Allez Cuisine! Oneliner on a punchcard
+print((r1,sum(c))if all([not(r1:=0),(c:=[1]*len(data)),(y:=lambda s:{int(
+x)for x in s.split()if x}),[x for e,x in enumerate(open("day04.txt").read(
+).splitlines())if(o:=y((w:=x.split(":")[1].split("|"))[0])&y(w[1]))and(
+r1:=r1+(2**(len(o)-1)))and[c.insert(d,c.pop(d)+1*c[e])for d in range(
+e+1,e+len(o)+1)]]])else 0)
