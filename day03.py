@@ -15,8 +15,6 @@ with open("day03.txt") as file:
                     r1 += (number := int(''.join([grid[x] for x in sorted(current_numbers)])))
                     p2_adj.append(number)
                     seen |= current_numbers
-
             if v == "*" and len(p2_adj) == 2:
                 r2 += p2_adj[0] * p2_adj[1]
-
     print(f"p1: {r1}, p2: {r2}")
