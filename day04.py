@@ -1,7 +1,7 @@
 with open("day04.txt") as file:
     data = file.read().splitlines()
     cards, cards_p2 = set(), {}
-    r1, r2 = 0, 0
+    r1 = 0
     for row in data:
         card, numbers = row.split(":")
         cards.add((card := int(card.split()[1].strip())))
