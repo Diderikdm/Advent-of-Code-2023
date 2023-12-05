@@ -9,25 +9,25 @@ with open("day05.txt") as file:
                 arrangements = [[int(x) for x in y.split()] for y in block.splitlines()[1:]]
                 next_ranges = []
                 while current_ranges:
-                    current_start, current_end = current_ranges.pop(0)
-                    for destination, source, r in arrangements:
-                        if source <= current_start and source + r > current_start:
-                            if current_end - current_start < r:
-                                next_ranges.append((destination + (current_start - source), destination + (current_end - source)))
+                    start, end = current_ranges.pop(0)
+                    for destination, source, rng in arrangements:
+                        if source <= start and source + rng > start:
+                            if end - start < rng:
+                                next_ranges.append((destination + (start - source), destination + (end - source)))
                             else:
-                                next_ranges.append((destination + (current_start - source), destination + (current_start + r - 1 - source)))
-                                current_ranges.append((current_start + r, current_end))
-                        elif source <= current_end and source + r > current_end:
-                            next_ranges.append((destination, destination + (current_end - source - 1)))
-                            current_ranges.append((current_start, source - 1))
-                        elif source > current_start and source + r < current_end:
-                            next_ranges.append((destination, destination + r - 1))
-                            current_ranges.extend([(current_start, source - 1), (source + r, current_end)])
+                                next_ranges.append((destination + (start - source), destination + (start + rng - 1 - source)))
+                                current_ranges.append((start + rng, end))
+                        elif source <= end and source + rng > end:
+                            next_ranges.append((destination, destination + (end - source - 1)))
+                            current_ranges.append((start, source - 1))
+                        elif source > start and source + rng < end:
+                            next_ranges.append((destination, destination + rng - 1))
+                            current_ranges.extend([(start, source - 1), (source + rng, end)])
                         else:
                             continue
                         break
                     else:
-                        next_ranges.append((current_start, current_end))
+                        next_ranges.append((start, end))
                 current_ranges = next_ranges
             mins.append((min(x[0] for x in current_ranges)))
         result.append(min(mins))
