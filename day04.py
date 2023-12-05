@@ -29,6 +29,5 @@ print(a, sum(b))
 # Oneline
 print((a,sum(b))if not(a:=0)and(b:=[1]*len(c:=open("day04.txt","r").read(
 ).splitlines()))and[x for e,x in enumerate(c)if(a:=a+(1<<(s:=sum(x.split(
-).count(y)== 2 for y in x.split()if y)//2)>>1))and[b.insert(d,b.pop(d)+1*b[e]
+).count(y)== 2 for y in{*x.split()}if y))>>1))and[b.insert(d,b.pop(d)+1*b[e]
 )for d in range(e+1,e+s+1)]]else 0)
-
