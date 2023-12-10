@@ -3,7 +3,9 @@ def expand_collection(coords: set[tuple[int, int]]):
         others = {(x,y)}
         while others:
             X, Y = others.pop()
-            adj = {a for x, y in ((X + 1, Y), (X- 1, Y), (X, Y + 1), (X, Y - 1)) if all([(a := (x, y)) in grid, 0 <= x < w, 0 <= y < h, a not in seen, a not in coords])}
+            adj = {a for x, y in (
+                (X + 1, Y), (X- 1, Y), (X, Y + 1), (X, Y - 1)
+                                                    ) if all([(a := (x, y)) in grid, 0 <= x < w, 0 <= y < h, a not in seen, a not in coords])}
             coords |= adj
             others |= adj
     return coords
