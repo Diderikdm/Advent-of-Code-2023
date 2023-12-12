@@ -8,7 +8,7 @@ def recurse(lava, springs, result=0):
     for i in range(len(lava) - sum(springs) - len(springs) - current + 1):
         if "#" in lava[:i]:
             break
-        if (nxt := i + current) < len(lava) + 1 and '.' not in lava[i : nxt] and lava[nxt : nxt + 1] != "#":
+        if (nxt := i + current) <= len(lava) and '.' not in lava[i : nxt] and lava[nxt : nxt + 1] != "#":
             result += recurse(lava[nxt + 1:], springs)
     return result
 
