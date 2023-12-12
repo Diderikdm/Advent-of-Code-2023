@@ -14,8 +14,8 @@ def recurse(lava, springs, result=0):
 
 with open("day12.txt", "r") as file:
     data = [x.split() for x in file.read().splitlines()]
-    p1, p2 = {}, {}
+    p1, p2 = 0, 0
     for e, (lava, springs) in enumerate(data):
-        p1[e] = recurse(lava, (springs := tuple(map(int, springs.split(",")))))
-        p2[e] = recurse("?".join([lava] * 5), springs * 5)
-    print(sum(x for x in p1.values()), sum(x for x in p2.values()))
+        p1 += recurse(lava, (springs := tuple(map(int, springs.split(",")))))
+        p2 += recurse("?".join([lava] * 5), springs * 5)
+    print(p1, p2)
