@@ -9,7 +9,7 @@ def calculate_reflection(p1, p2, y=-1):
                 break
             if d[i] != d[i - y]:
                 if not smudge and len([u for u in range(len(d[i])) if d[i][u] != d[i - y][u]]) == 1: 
-                    smudge = 1
+                    smudge = True
                 else: break
         else:
             if smudge: p2 += e * multiplier
