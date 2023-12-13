@@ -10,9 +10,6 @@ def calculate_reflection(p1, p2, y=-1, smudge=False):
                 if not smudge and len([u for u in range(len(d[i])) if d[i][u] != d[i - y][u]]) == 1: 
                     smudge = True
                 else: break
-        else:
-            if smudge: p2 += e * multiplier
-            else:      p1 += e * multiplier
     return p1, p2
 
 with open("day13.txt", "r") as file:
