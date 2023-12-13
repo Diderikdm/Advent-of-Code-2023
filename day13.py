@@ -1,6 +1,5 @@
-def calculate_reflection(p1, p2, y=-1):
+def calculate_reflection(p1, p2, y=-1, smudge=False):
     if e and len([u for u in range(len(d[e])) if d[e][u] != d[e - 1][u]]) < 2:
-        smudge = False
         for i in range(e, len(d) + 1):
             y += 2
             if i - y < 0 or i == len(d):
