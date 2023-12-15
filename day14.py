@@ -24,4 +24,4 @@ with open("day14.txt", "r") as file:
                 p1 = sum([data[u].count("O") * -u for u in range(-len(data), 0)])
         c += 1
     nxt = seen[(s := seen.index(nxt)) + (1000000000 - s) % (c - s)]
-    print(p1, sum([nxt[e].count("O") * -e for e in range(-len(reverse), 0)]))
+    print(p1, sum([nxt[e].count("O") * -e for e in range(-len(nxt), 0)]))
