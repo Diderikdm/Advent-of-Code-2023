@@ -29,6 +29,7 @@ with open("day10.txt", "r") as file:
 
     s_x, s_y = start
     lefts, rights = set(), set()
+    r = []
     for next_value, valids in (((s_x + 1, s_y), "-J7S"), ((s_x - 1, s_y), "-LFS"), ((s_x, s_y + 1), "|LJS"), ((s_x, s_y - 1), "|7FS")):
         if (next_sign := grid.get(next_value, 0)) and next_sign in valids:
             seen, steps = {start}, 0
@@ -41,11 +42,11 @@ with open("day10.txt", "r") as file:
                     for x in direction:
                         if x in grid:
                             collection.add(x)
-            print((steps - 1) // 2 + 1)
+            r.append((steps - 1) // 2 + 1)
             break
     
     outer_coords = expand_collection({(x, y) for x in range(w) for y in range(h) if (x in [0, w - 1] or y in [0, h - 1]) and (x, y) not in seen})
 
     for inner_coords in [lefts - seen, rights - seen]:
         if inner_coords - outer_coords == inner_coords:
-            print(len(expand_collection(inner_coords)))
+            print(r[0], len(expand_collection(inner_coords)))

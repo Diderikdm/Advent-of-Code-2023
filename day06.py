@@ -13,6 +13,7 @@ with open("day06.txt") as file:
     data = file.read().splitlines()
     d1 = zip(*[[int(x) for x in y.split()[1:] if x] for y in data])
     d2 = [[int(''.join([x for x in y.split()[1:] if x])) for y in data]]
+    r = []
     for d in [d1, d2]:
         result = 1
         for time, distance in d:
@@ -20,4 +21,5 @@ with open("day06.txt") as file:
             high = search(time, distance, time // 2 - 1, time - 1, 1)
             if low and high:
                 result *= high - low + 1
-        print(result)
+        r.append(result)
+    print(r)
