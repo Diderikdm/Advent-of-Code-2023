@@ -9,7 +9,7 @@ for x in range(1, 26):
         __import__(day)
         b = datetime.now()
         print(b - n, "\n")
-    except:
+    except ImportError:
         continue
 
 print("all days", b - now)
