@@ -1,13 +1,12 @@
 from math import prod
 
-def recurse(label, x, m, a, s):
+def recurse(label, x, m, a, s, result=0):
     if label == "R": return 0
     if label == "A":
         for X, M, A, S in set(parts):
             if not (part := (X, M, A, S)) in p1 and all([q[0] <= Q <= q[1] for q, Q in ((x, X), (m, M), (a, A), (s, S))]):
                 p1.add(part); parts.remove(part)
         return prod(len(range(i, j + 1)) for i, j in [x, m, a, s])
-    result = 0
     for new_label, (X, M, A, S) in workflows[label]:
         new = [[max([q[0], Q[0]]), min([q[1], Q[1]])] for q, Q in [(x, X), (m, M), (a, A), (s, S)]]
         if not any(q[1] < q[0] for q in new):
@@ -34,4 +33,4 @@ with open("day19.txt", "r") as file:
                         elif sign == "<": current += [[vars[x], int(value) - 1]];         vars[x] = int(value)
                     else:                 current += [[vars[x], vars[x.upper()]]]                
             workflows[label].append((other_label, current))
-    print([recurse("in", *[[1,4000]] * 4), sum(sum(x) for x in p1)][::-1])
+    print([recurse("in", *[[1, 4000]] * 4), sum(sum(x) for x in p1)][::-1])
