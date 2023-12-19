@@ -7,7 +7,6 @@ def recurse(label, x, m, a, s):
             if not (part := (X, M, A, S)) in p1 and all([q[0] <= Q <= q[1] for q, Q in ((x, X), (m, M), (a, A), (s, S))]):
                 p1.add(part); parts.remove(part)
         return prod(len(range(i, j + 1)) for i, j in [x, m, a, s])
-    
     result = 0
     for new_label, (X, M, A, S) in workflows[label]:
         new = [[max([q[0], Q[0]]), min([q[1], Q[1]])] for q, Q in [(x, X), (m, M), (a, A), (s, S)]]
