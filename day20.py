@@ -13,7 +13,7 @@ with open("day20.txt", "r") as file:
         relevant[current] = nxt = [k for k, v in broadcasters.items() if current in v]
         for x in nxt:
             if x not in relevant: queue.add(x)
-    conj_patterns = {x for x in [y for y in set(sum(relevant.values(), [])) if y in conjunctions]}
+    conj_patterns = {x for x in set(sum(relevant.values(), [])) if x in conjunctions}
     while conj_patterns:
         button += 1; low += 1
         queue = [{"broadcaster" : (0, "button")}]
