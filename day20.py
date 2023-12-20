@@ -2,7 +2,7 @@ with open("day20.txt", "r") as file:
     broadcasters, conjunctions, flipflops, relevant, queue, low, high, button, p2 = {}, {}, {}, {}, {"rx"}, 0, 0, 0, 1
     for broadcaster, receivers in [x.split(" -> ") for x in file.read().splitlines()]:
         b, receivers = broadcaster[1:], receivers.split(", ")
-        if broadcaster == "broadcaster":  broadcasters[broadcaster] = {x : lambda y: y for x in receivers}
+        if broadcaster == "broadcaster":  broadcasters[broadcaster] = {x : (lambda y: y) for x in receivers}
         elif broadcaster.startswith("&"): broadcasters[b] = {x : (lambda y, b=b: set(conjunctions[b].values()) != {1}) for x in receivers}; conjunctions[b] = {}
         elif broadcaster.startswith("%"): broadcasters[b] = {x : (lambda y, b=b: flipflops[b])                         for x in receivers}; flipflops[b] = 0
     for k, v in broadcasters.items():
