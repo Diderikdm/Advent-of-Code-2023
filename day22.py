@@ -16,7 +16,7 @@ with open("day22.txt", "r") as file:
                 bricks_down[brick].add(down_brick)
                 bricks_up[down_brick] = bricks_up.get(down_brick, set()) | {brick}
     for brick in bricks:
-        if (not (up := bricks_up.get(brick, [])) or all([len(bricks_down.get(x, [])) > 1 for x in up])):
+        if not (up := bricks_up.get(brick, [])) or all([len(bricks_down.get(x, [])) > 1 for x in up]):
             p1 += 1
         queue = [brick]
         falling_bricks = {brick}
