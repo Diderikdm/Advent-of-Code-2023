@@ -1,5 +1,5 @@
 with open("day22.txt", "r") as file:
-    grid = {}; bricks_down = {}; bricks_up = {}; bricks = []; supports = {}; falling_bricks = {}; p1 = p2 = 0
+    grid = {}; bricks_down = {}; bricks_up = {}; falling_bricks = {}; bricks = []; p1 = p2 = 0
     data = [[[*map(int, y.split(","))] for y in x.split("~")] for x in file.read().splitlines()]
     for brick in sorted(data, key=lambda x: min([x[0][2], x[1][2]])):
         x, y, z = [list(range(*((b := sorted([brick[0][a], brick[1][a]]))[0], b[1] + 1))) for a in range(3)]
