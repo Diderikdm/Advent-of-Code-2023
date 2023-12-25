@@ -12,12 +12,11 @@ def find_intersection_point(px1, py1, vx1, vy1, px2, py2, vx2, vy2, xmin, ymin, 
             return x, y
     
 with open("day24.txt", "r") as file:
-    data = file.read().splitlines()
     lines_x_y = []
     p1 = 0
     solver = z3.Solver()
     pxu, pyu, pzu, vxu, vyu, vzu = z3.Ints("pxu pyu pzu vxu vyu vzu")
-    for e, row in enumerate(data):
+    for e, row in enumerate(file.read().splitlines()):
         px, py, pz, vx, vy, vz = [*map(int, row.replace(" @ ", ", ").split(", "))]
         lines_x_y.append((px, py, vx, vy))
         time = z3.Int(f"t{e}")
