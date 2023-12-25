@@ -44,7 +44,7 @@ with open("day24.txt", "r") as file:
             p1 += 1
     px, py, pz, vx, vy, vz = z3.Ints("px py pz vx vy vz")
     solver = z3.Solver()
-    for e, line in enumerate(lines_x_y_z[:6]):
+    for e, line in enumerate(lines_x_y_z):
         ppx, ppy, ppz, vvx, vvy, vvz = line
         time = z3.Int(f"t{e}")
         solver.add(px + vx * time == ppx + vvx * time)
