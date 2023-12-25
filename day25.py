@@ -1,10 +1,10 @@
-import networkx as nx
+from networkx import Graph, spectral_bisection
 
 with open("day25.txt", "r") as file:
-    graph = nx.Graph()
+    graph = Graph()
     for row in file.read().splitlines():
         node, others = row.split(': ')
         for other in others.split(' '):
             graph.add_edge(node, other)
-    bisected = nx.spectral_bisection(graph)
+    bisected = spectral_bisection(graph)
     print(len(bisected[0]) * len(bisected[1]))
